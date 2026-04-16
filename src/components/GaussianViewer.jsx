@@ -4,6 +4,7 @@ import { useScrollProgress } from '../hooks/useScrollProgress'
 import { defaultPath } from '../utils/cameraPath'
 import { LoadingScreen } from './LoadingScreen'
 import { ProgressBar } from './ProgressBar'
+import { IntroBox } from './IntroBox'
 
 export function GaussianViewer({ plyPath = '/image.ply' }) {
   const containerRef = useRef(null)
@@ -53,6 +54,7 @@ export function GaussianViewer({ plyPath = '/image.ply' }) {
       {isLoaded && showHint && (
         <div className="hint">↓ SCROLL TO START ↓</div>
       )}
+      {isLoaded && <IntroBox visible={effectiveProgress >= 0.99} />}
     </>
   )
 }
