@@ -11,7 +11,7 @@ export function GaussianViewer({ plyPath = '/image.ply' }) {
 
   const { camera, isLoaded, render } = useGaussianScene(containerRef, plyPath)
   const { progress } = useScrollProgress({
-    sensitivity: 0.0005,
+    sensitivity: 0.0012,
     smoothFactor: 0.06,
   })
 
