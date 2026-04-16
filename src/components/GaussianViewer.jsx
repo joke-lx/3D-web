@@ -22,8 +22,8 @@ export function GaussianViewer({ plyPath = '/image.ply' }) {
     }
   }, [progress])
 
-  // 进度封顶：滚动超过32%时，相机停在终点
-  const effectiveProgress = Math.min(progress, 0.32)
+  // 路径终点已设为原32%位置，无需封顶
+  const effectiveProgress = progress
 
   // 动画循环
   useEffect(() => {
