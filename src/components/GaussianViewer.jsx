@@ -11,7 +11,7 @@ export function GaussianViewer({ plyPath = '/image.ply' }) {
 
   const { camera, isLoaded, render } = useGaussianScene(containerRef, plyPath)
   const { progress } = useScrollProgress({
-    sensitivity: 0.0001,
+    sensitivity: 0.0005,
     smoothFactor: 0.06,
   })
 
@@ -22,8 +22,8 @@ export function GaussianViewer({ plyPath = '/image.ply' }) {
     }
   }, [progress])
 
-  // 进度压缩：32% = 100%
-  const effectiveProgress = Math.min(progress / 0.32, 1)
+  // 进度封顶：滚动超过32%时，相机停在终点
+  const effectiveProgress = Math.min(progress, 0.32)
 
   // 动画循环
   useEffect(() => {
